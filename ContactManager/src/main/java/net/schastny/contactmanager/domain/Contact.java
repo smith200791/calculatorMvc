@@ -2,7 +2,10 @@ package net.schastny.contactmanager.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -13,7 +16,9 @@ public class Contact {
 
     @Id
     @Column(name = "ID", unique = true, nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="contact_seq")
+    @SequenceGenerator(name="contact_seq", sequenceName="contact_seq"  )
+    private Integer id; 
 
     @Column(name = "FIRSTNAME")
     private String firstname;

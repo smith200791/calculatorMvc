@@ -4,6 +4,7 @@ import java.util.List;
 
 import net.schastny.contactmanager.domain.Contact;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,7 +16,10 @@ public class ContactDAOImpl implements ContactDAO {
     private SessionFactory sessionFactory;
 
     public void addContact(Contact contact) {
-        sessionFactory.getCurrentSession().save(contact);
+        Session currentSession = sessionFactory.getCurrentSession();
+        currentSession.save(contact);
+        currentSession.flush();
+        
     }
 
     @SuppressWarnings("unchecked")
