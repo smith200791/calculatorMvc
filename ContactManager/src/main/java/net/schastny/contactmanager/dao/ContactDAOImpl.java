@@ -19,7 +19,6 @@ public class ContactDAOImpl implements ContactDAO {
         Session currentSession = sessionFactory.getCurrentSession();
         currentSession.save(contact);
         currentSession.flush();
-        
     }
 
     @SuppressWarnings("unchecked")
