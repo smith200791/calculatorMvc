@@ -6,7 +6,7 @@ import ru.nvd.andr.calcmvc.domain.TableCalcOperations;
 
 public interface CalcOperationsDAO {
 
-    public void addContact(TableCalcOperations calcOperations);
+    public void addCalcOperaton(TableCalcOperations calcOperations);
 
     public List<TableCalcOperations> listCalcOperations();
 

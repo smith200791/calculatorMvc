@@ -57,6 +57,4 @@ public class TableCalcOperations implements Serializable {
         this.createDate = createDate;
     }
     
-    
-    
 }
