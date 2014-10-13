@@ -19,7 +19,7 @@
 		<spring:message code="label.title" />
 	</h2>
 
-	<form:form method="post" action="add" commandName="contact">
+	<form:form method="post" action="summ" >
 
 		<table>
 			<tr>

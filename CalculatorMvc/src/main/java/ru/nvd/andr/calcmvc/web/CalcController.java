@@ -33,7 +33,7 @@ public class CalcController {
 
         return "contact";
     }
-    @RequestMapping(value = "/database_viewer", method = RequestMethod.POST)
+    @RequestMapping(value = "/summ", method = RequestMethod.POST)
     public String addContact(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOperations, BindingResult result) {
         calcOperationsService.addTableCalcOperations(calcOperations);
         return "redirect:/index";
