@@ -2,11 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.springframework.samples.service.service</groupId>
-	<artifactId>ContactManager</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<build>
-		<finalName>ContactManager</finalName>
+		<finalName>CalculatorMVC</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
@@ -17,7 +16,7 @@
 					<username>tomcat</username>
 					<password>tomcat</password>
 					<server>deploymentRepo</server>
-					<path>/ContactManager</path>
+					<path>/CalculatorMVC</path>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -195,4 +194,5 @@
 			<version>1.5.4</version>
 		</dependency>
 	</dependencies>
+	<artifactId>CalculatorMVC</artifactId>
 </project>

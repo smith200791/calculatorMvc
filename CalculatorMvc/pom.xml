@@ -22,7 +22,7 @@
 					<username>tomcat</username>
 					<password>tomcat</password>
 					<server>deploymentRepo</server>
-					<path>/ContactManager</path>
+					<path>/CalculatorMvc</path>
 				</configuration>
 			</plugin>
 			<!-- для сбрки нам понадобятся стантардные mojo - мавен голы, для этого 
