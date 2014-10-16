@@ -1,7 +1,6 @@
 package ru.nvd.andr.calcmvc.domain;
 
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,9 +16,8 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="TABLE_CALC_OPERATIONS" ,uniqueConstraints = {
         @UniqueConstraint(columnNames = "OBJID")})
-public class TableCalcOperations implements Serializable {
+public class TableCalcOperations  {
 
-    private static final long serialVersionUID = 8660861638523120444L;
     @Id
     @Column(name="OBJID",  unique = true, nullable = false)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="calc_oper_seq")
