@@ -27,11 +27,11 @@ public class CalcController {
 
     @RequestMapping("/index")
     public String listCalcOperations(Map<String, Object> map) {
-
-        map.put("calcOperations", new TableCalcOperations());
-        map.put("calcOperationsList", calcOperationsService.listTableCalcOperations());
-
-        return "contact";
+//
+//        map.put("calcOperations", new TableCalcOperations());
+//        map.put("calcOperationsList", calcOperationsService.listTableCalcOperations());
+//!!!имя jsp которое вызывается!!!
+        return "calculator";
     }
     @RequestMapping(value = "/summ", method = RequestMethod.POST)
     public String addContact(String firstarg, String secondagr, BindingResult result) {
