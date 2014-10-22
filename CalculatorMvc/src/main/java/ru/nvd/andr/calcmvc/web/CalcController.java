@@ -27,10 +27,10 @@ public class CalcController {
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.GET) 
-    public String listCalcOperations(Map<String, Object> map) {
+    public String listCalcOperations(Map<String, Object> objectMap) {
 
-        map.put("calcOperations", new TableCalcOperations());
-//        map.put("calcOperationsList", calcOperationsService.listTableCalcOperations());
+        objectMap.put("calcOperations", new TableCalcOperations());
+        objectMap.put("calcOperationsList", calcOperationsService.listTableCalcOperations());
 //!!!имя jsp которое вызывается!!!
         return "calculator";
     }

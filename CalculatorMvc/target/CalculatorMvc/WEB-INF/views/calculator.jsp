@@ -19,11 +19,11 @@
 		<spring:message code="label.title" />
 	</h2>
 
-	<form:form method="post" action="summ" modelAttribute="calcOperations" >
-
+	<form:form method="post" action="summ" modelAttribute="calcOperations" > 
+	<!-- modelAttribute="calcOperations" данный параметр задается в контоллере при инициализации -->
 		<table>
 			<tr>
-				<td><form:label path="firstarg">
+				<td><form:label path="firstarg"> <!-- а это поля данной объектной модели, можно сразу инициализировать объект -->
 						<spring:message code="label.firstarg" />
 					</form:label></td>
 				<td><form:input path="firstarg" /></td>

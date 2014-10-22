@@ -17,20 +17,20 @@ import javax.persistence.UniqueConstraint;
 @Table(name="TABLE_CALC_OPERATIONS" ,uniqueConstraints = {
         @UniqueConstraint(columnNames = "OBJID")})
 public class TableCalcOperations  {
-
+   
     @Id
     @Column(name="OBJID",  unique = true, nullable = false)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="calc_oper_seq")
     @SequenceGenerator(name="calc_oper_seq", sequenceName="calc_oper_seq"  )
     protected long objid;
     
-    @Column(name="FRISTARG",unique = false, nullable = false, length = 255)
+    @Column(name="FIRSTARG",unique = false, nullable = false, length = 255)
     protected String firstarg;
 
     @Column(name="SECONDARG",unique = false, nullable = false, length = 255)
     protected String secondarg;
 
-    @Column(name="OPRATION",unique = false, nullable = false, length = 255)
+    @Column(name="OPERATION",unique = false, nullable = false, length = 255)
     protected String operaion;
 
     @Column(name="RESULT",unique = false, nullable = false, length = 255)
