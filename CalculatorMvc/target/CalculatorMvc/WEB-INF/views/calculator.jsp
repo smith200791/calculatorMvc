@@ -19,7 +19,7 @@
 		<spring:message code="label.title" />
 	</h2>
 
-	<form:form method="post" action="summ" commandName="activity" >
+	<form:form method="post" action="summ" modelAttribute="calcOperations" >
 
 		<table>
 			<tr>
@@ -29,10 +29,10 @@
 				<td><form:input path="firstarg" /></td>
 			</tr>
 			<tr>
-				<td><form:label path="secondagr">
-						<spring:message code="label.secondagr" />
+				<td><form:label path="secondarg">
+						<spring:message code="label.secondarg" />
 					</form:label></td>
-				<td><form:input path="secondagr" /></td>
+				<td><form:input path="secondarg" /></td>
 			</tr>
 
 			<tr>

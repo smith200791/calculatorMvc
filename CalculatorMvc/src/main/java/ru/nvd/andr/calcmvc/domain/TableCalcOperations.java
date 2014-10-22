@@ -24,6 +24,14 @@ public class TableCalcOperations  {
     @SequenceGenerator(name="calc_oper_seq", sequenceName="calc_oper_seq"  )
     protected long objid;
     
+    @Column(name="FRISTARG",unique = false, nullable = false, length = 255)
+    protected String firstarg;
+
+    @Column(name="SECONDARG",unique = false, nullable = false, length = 255)
+    protected String secondarg;
+
+    @Column(name="OPRATION",unique = false, nullable = false, length = 255)
+    protected String operaion;
 
     @Column(name="RESULT",unique = false, nullable = false, length = 255)
     protected String result;
@@ -54,5 +62,28 @@ public class TableCalcOperations  {
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
-    
+
+    public String getFirstarg() {
+        return firstarg;
+    }
+
+    public void setFirstarg(String firstarg) {
+        this.firstarg = firstarg;
+    }
+
+    public String getSecondarg() {
+        return secondarg;
+    }
+
+    public void setSecondarg(String secondarg) {
+        this.secondarg = secondarg;
+    }
+
+    public String getOperaion() {
+        return operaion;
+    }
+
+    public void setOperaion(String operaion) {
+        this.operaion = operaion;
+    }   
 }

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,18 +26,21 @@ public class CalcController {
         return "redirect:/index";
     }
 
-    @RequestMapping("/index")
+    @RequestMapping(value = "/index", method = RequestMethod.GET) 
     public String listCalcOperations(Map<String, Object> map) {
-//
-//        map.put("calcOperations", new TableCalcOperations());
+
+        map.put("calcOperations", new TableCalcOperations());
 //        map.put("calcOperationsList", calcOperationsService.listTableCalcOperations());
 //!!!имя jsp которое вызывается!!!
         return "calculator";
     }
     @RequestMapping(value = "/summ", method = RequestMethod.POST)
-    public String addContact(String firstarg, String secondagr, BindingResult result) {
-        Integer summing = Integer.parseInt(firstarg)+Integer.parseInt(secondagr);
+    public String addContact(@ModelAttribute("TableCalcOperations")  TableCalcOperations calcOpers, BindingResult result) {
+        Integer summing = Integer.parseInt(calcOpers.getFirstarg())+Integer.parseInt(calcOpers.getSecondarg());
         TableCalcOperations calcOperations = new TableCalcOperations();
+        calcOperations.setFirstarg(calcOpers.getFirstarg());
+        calcOperations.setSecondarg(calcOpers.getSecondarg());
+        calcOperations.setOperaion("+");
         calcOperations.setCreateDate(new Date());
         calcOperations.setResult(summing.toString());
         calcOperationsService.addTableCalcOperations(calcOperations);
