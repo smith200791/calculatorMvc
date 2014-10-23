@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -31,7 +32,7 @@ public class CalcController {
 
         objectMap.put("calcOperations", new TableCalcOperations());
         objectMap.put("calcOperationsList", calcOperationsService.listTableCalcOperations());
-//!!!имя jsp которое вызывается!!!
+        //!!!имя jsp которое вызывается!!!
         return "calculator";
     }
     @RequestMapping(value = "/summ", method = RequestMethod.POST)
@@ -47,4 +48,13 @@ public class CalcController {
         return "redirect:/index";
     }
 
+    @RequestMapping("/delete/{objid}")
+    public String deleteContact(@PathVariable("objid") Long objid) {
+        calcOperationsService.removeTableCalcOperations(objid);
+        return "redirect:/index";
+    }
+    @RequestMapping("/logout")
+    public String logout() {
+        return "logout";
+    }
 }

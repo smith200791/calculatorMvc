@@ -57,7 +57,7 @@
 			</tr>
 			<c:forEach items="${calcOperationsList}" var="calcOperations">
 				<tr>
-					<td>${calcOperations.firstarg},${calcOperations.operation},${calcOperations.secondarg},${calcOperations.result},"   ",${calcOperations.createDate}</td>
+					<td> objid = ${calcOperations.objid}: ${calcOperations.firstarg} ${calcOperations.operation} ${calcOperations.secondarg} = ${calcOperations.result}  когда : ${calcOperations.createDate}</td>
 					<td><a href="delete/${calcOperations.objid}"><spring:message
 								code="label.delete" /></a></td>
 				</tr>

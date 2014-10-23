@@ -10,6 +10,6 @@ public interface CalcOperationsDAO {
 
     public List<TableCalcOperations> listCalcOperations();
 
-    public void removeCalcOperation(long objid);
+    public void removeCalcOperation(Long objid);
 
 }

@@ -9,6 +9,6 @@ public interface CalcOperationsService {
 
     public List<TableCalcOperations> listTableCalcOperations();
 
-    public void removeTableCalcOperations(Integer objid);
+    public void removeTableCalcOperations(Long objid);
 
 }

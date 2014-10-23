@@ -29,7 +29,7 @@ public class CalcOperationsServiceImpl implements CalcOperationsService {
 
 
     @Transactional
-    public void removeTableCalcOperations(Integer objid) {
+    public void removeTableCalcOperations(Long objid) {
         calcOperationsDAO.removeCalcOperation(objid);
     }
 

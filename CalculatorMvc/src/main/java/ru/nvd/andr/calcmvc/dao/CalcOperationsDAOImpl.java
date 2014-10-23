@@ -29,7 +29,7 @@ public class CalcOperationsDAOImpl implements CalcOperationsDAO {
         return sessionFactory.getCurrentSession().createQuery("from TableCalcOperations").list();
     }
 
-    public void removeCalcOperation(long objid) {
+    public void removeCalcOperation(Long objid) {
         Session currentSession = sessionFactory.getCurrentSession();
         TableCalcOperations calcOperations = (TableCalcOperations) currentSession.load(TableCalcOperations.class, objid);
         if (calcOperations != null) {
