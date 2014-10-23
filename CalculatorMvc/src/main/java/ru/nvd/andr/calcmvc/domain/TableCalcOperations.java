@@ -31,7 +31,7 @@ public class TableCalcOperations  {
     protected String secondarg;
 
     @Column(name="OPERATION",unique = false, nullable = false, length = 255)
-    protected String operaion;
+    protected String operation;
 
     @Column(name="RESULT",unique = false, nullable = false, length = 255)
     protected String result;
@@ -79,11 +79,13 @@ public class TableCalcOperations  {
         this.secondarg = secondarg;
     }
 
-    public String getOperaion() {
-        return operaion;
+    public String getOperation() {
+        return operation;
     }
 
-    public void setOperaion(String operaion) {
-        this.operaion = operaion;
-    }   
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+
+
 }

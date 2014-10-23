@@ -40,7 +40,7 @@ public class CalcController {
         TableCalcOperations calcOperations = new TableCalcOperations();
         calcOperations.setFirstarg(calcOpers.getFirstarg());
         calcOperations.setSecondarg(calcOpers.getSecondarg());
-        calcOperations.setOperaion("+");
+        calcOperations.setOperation("+");
         calcOperations.setCreateDate(new Date());
         calcOperations.setResult(summing.toString());
         calcOperationsService.addTableCalcOperations(calcOperations);

@@ -48,13 +48,16 @@
 	<c:if test="${!empty calcOperationsList}">
 		<table class="data">
 			<tr>
-				<th><spring:message code="label.result" /></th>
+			<%-- 
+				<th><spring:message code="label.firstarg" /></th>
 				<th><spring:message code="label.createdate" /></th>
+				<th><spring:message code="label.result" /></th>
+				<th><spring:message code="label.createdate" /></th> --%>
 				<th>&nbsp;</th>
 			</tr>
 			<c:forEach items="${calcOperationsList}" var="calcOperations">
 				<tr>
-					<td>${calcOperations.result},${calcOperations.create_date}</td>
+					<td>${calcOperations.firstarg},${calcOperations.operation},${calcOperations.secondarg},${calcOperations.result},"   ",${calcOperations.createDate}</td>
 					<td><a href="delete/${calcOperations.objid}"><spring:message
 								code="label.delete" /></a></td>
 				</tr>
