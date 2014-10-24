@@ -36,12 +36,20 @@
 			</tr>
 
 			<tr>
-				<td colspan="2"><input type="submit" name="summ" class="button" value="Summ"
+				<td colspan="2"><input type="submit" name="summ" class="button"
 					value="<spring:message code="label.summ"/>" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" name="multiply" class="button" value="Multiply"
+				<td colspan="2"><input type="submit" name="multiply" class="button" 
 					value="<spring:message code="label.multiply"/>" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="subtraction" class="button" 
+					value="<spring:message code="label.subtraction"/>" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="division" class="button" 
+					value="<spring:message code="label.division"/>" /></td>
 			</tr>
 		</table>
 	</form:form>

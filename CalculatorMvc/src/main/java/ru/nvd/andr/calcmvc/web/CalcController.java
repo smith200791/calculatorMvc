@@ -38,30 +38,53 @@ public class CalcController {
 
     @RequestMapping(params = "summ", method = RequestMethod.POST)
     public String summ(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result) {
-        Integer summing = Integer.parseInt(calcOpers.getFirstarg()) + Integer.parseInt(calcOpers.getSecondarg());
+        Integer operResult = Integer.parseInt(calcOpers.getFirstarg()) + Integer.parseInt(calcOpers.getSecondarg());
         TableCalcOperations calcOperations = new TableCalcOperations();
         calcOperations.setFirstarg(calcOpers.getFirstarg());
         calcOperations.setSecondarg(calcOpers.getSecondarg());
         calcOperations.setOperation("+");
         calcOperations.setCreateDate(new Date());
-        calcOperations.setResult(summing.toString());
+        calcOperations.setResult(operResult.toString());
         calcOperationsService.addTableCalcOperations(calcOperations);
         return "redirect:/index";
     }
 
     @RequestMapping(params = "multiply", method = RequestMethod.POST)
     public String multiply(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result) {
-        Integer summing = Integer.parseInt(calcOpers.getFirstarg()) * Integer.parseInt(calcOpers.getSecondarg());
+        Integer operResult = Integer.parseInt(calcOpers.getFirstarg()) * Integer.parseInt(calcOpers.getSecondarg());
         TableCalcOperations calcOperations = new TableCalcOperations();
         calcOperations.setFirstarg(calcOpers.getFirstarg());
         calcOperations.setSecondarg(calcOpers.getSecondarg());
         calcOperations.setOperation("*");
         calcOperations.setCreateDate(new Date());
-        calcOperations.setResult(summing.toString());
+        calcOperations.setResult(operResult.toString());
         calcOperationsService.addTableCalcOperations(calcOperations);
         return "redirect:/index";
     }
-
+    @RequestMapping(params = "division", method = RequestMethod.POST)
+    public String division(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result) {
+        Integer operResult = Integer.parseInt(calcOpers.getFirstarg()) / Integer.parseInt(calcOpers.getSecondarg());
+        TableCalcOperations calcOperations = new TableCalcOperations();
+        calcOperations.setFirstarg(calcOpers.getFirstarg());
+        calcOperations.setSecondarg(calcOpers.getSecondarg());
+        calcOperations.setOperation("/");
+        calcOperations.setCreateDate(new Date());
+        calcOperations.setResult(operResult.toString());
+        calcOperationsService.addTableCalcOperations(calcOperations);
+        return "redirect:/index";
+    }
+    @RequestMapping(params = "subtraction", method = RequestMethod.POST)
+    public String subtraction(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result) {
+        Integer operResult = Integer.parseInt(calcOpers.getFirstarg()) - Integer.parseInt(calcOpers.getSecondarg());
+        TableCalcOperations calcOperations = new TableCalcOperations();
+        calcOperations.setFirstarg(calcOpers.getFirstarg());
+        calcOperations.setSecondarg(calcOpers.getSecondarg());
+        calcOperations.setOperation("-");
+        calcOperations.setCreateDate(new Date());
+        calcOperations.setResult(operResult.toString());
+        calcOperationsService.addTableCalcOperations(calcOperations);
+        return "redirect:/index";
+    }
     @RequestMapping("/delete/{objid}")
     public String deleteContact(@PathVariable("objid") Long objid) {
         calcOperationsService.removeTableCalcOperations(objid);
