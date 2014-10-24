@@ -27,21 +27,35 @@ public class CalcController {
         return "redirect:/index";
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET) 
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String listCalcOperations(Map<String, Object> objectMap) {
 
         objectMap.put("calcOperations", new TableCalcOperations());
         objectMap.put("calcOperationsList", calcOperationsService.listTableCalcOperations());
-        //!!!имя jsp которое вызывается!!!
+        // !!!имя jsp которое вызывается!!!
         return "calculator";
     }
-    @RequestMapping(value = "/summ", method = RequestMethod.POST)
-    public String addContact(@ModelAttribute("TableCalcOperations")  TableCalcOperations calcOpers, BindingResult result) {
-        Integer summing = Integer.parseInt(calcOpers.getFirstarg())+Integer.parseInt(calcOpers.getSecondarg());
+
+    @RequestMapping(params = "summ", method = RequestMethod.POST)
+    public String summ(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result) {
+        Integer summing = Integer.parseInt(calcOpers.getFirstarg()) + Integer.parseInt(calcOpers.getSecondarg());
         TableCalcOperations calcOperations = new TableCalcOperations();
         calcOperations.setFirstarg(calcOpers.getFirstarg());
         calcOperations.setSecondarg(calcOpers.getSecondarg());
         calcOperations.setOperation("+");
+        calcOperations.setCreateDate(new Date());
+        calcOperations.setResult(summing.toString());
+        calcOperationsService.addTableCalcOperations(calcOperations);
+        return "redirect:/index";
+    }
+
+    @RequestMapping(params = "multiply", method = RequestMethod.POST)
+    public String multiply(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result) {
+        Integer summing = Integer.parseInt(calcOpers.getFirstarg()) * Integer.parseInt(calcOpers.getSecondarg());
+        TableCalcOperations calcOperations = new TableCalcOperations();
+        calcOperations.setFirstarg(calcOpers.getFirstarg());
+        calcOperations.setSecondarg(calcOpers.getSecondarg());
+        calcOperations.setOperation("*");
         calcOperations.setCreateDate(new Date());
         calcOperations.setResult(summing.toString());
         calcOperationsService.addTableCalcOperations(calcOperations);
@@ -53,6 +67,7 @@ public class CalcController {
         calcOperationsService.removeTableCalcOperations(objid);
         return "redirect:/index";
     }
+
     @RequestMapping("/logout")
     public String logout() {
         return "logout";

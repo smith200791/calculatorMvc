@@ -19,7 +19,7 @@
 		<spring:message code="label.title" />
 	</h2>
 
-	<form:form method="post" action="summ" modelAttribute="calcOperations" > 
+	<form:form method="post"   modelAttribute="calcOperations" > 
 	<!-- modelAttribute="calcOperations" данный параметр задается в контоллере при инициализации -->
 		<table>
 			<tr>
@@ -36,8 +36,12 @@
 			</tr>
 
 			<tr>
-				<td colspan="2"><input type="submit"
-					value="<spring:message code="label.getresult"/>" /></td>
+				<td colspan="2"><input type="submit" name="summ" class="button" value="Summ"
+					value="<spring:message code="label.summ"/>" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" name="multiply" class="button" value="Multiply"
+					value="<spring:message code="label.multiply"/>" /></td>
 			</tr>
 		</table>
 	</form:form>
@@ -57,7 +61,7 @@
 			</tr>
 			<c:forEach items="${calcOperationsList}" var="calcOperations">
 				<tr>
-					<td> objid = ${calcOperations.objid}: ${calcOperations.firstarg} ${calcOperations.operation} ${calcOperations.secondarg} = ${calcOperations.result}  когда : ${calcOperations.createDate}</td>
+					<td> objid = ${calcOperations.objid}: ${calcOperations.firstarg} ${calcOperations.operation} ${calcOperations.secondarg} = ${calcOperations.result}  дата транзакции : ${calcOperations.createDate}</td>
 					<td><a href="delete/${calcOperations.objid}"><spring:message
 								code="label.delete" /></a></td>
 				</tr>
