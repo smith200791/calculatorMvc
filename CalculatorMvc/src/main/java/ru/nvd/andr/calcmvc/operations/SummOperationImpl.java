@@ -1,6 +1,10 @@
 package ru.nvd.andr.calcmvc.operations;
 
+import org.springframework.stereotype.Service;
+
+@Service("+")
 public class SummOperationImpl implements Operation {
+
 
     @Override
     public Long excecute(Long firstAgr, Long seconArg) {

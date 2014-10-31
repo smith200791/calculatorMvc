@@ -21,6 +21,8 @@ public class CalcController {
 
     @Autowired
     private CalcOperationsService calcOperationsService;
+    @Autowired
+    private OperationFactory operationFactory;
 
     @RequestMapping("/")
     // при попадании на основную ссылку /CalcOperations,
@@ -47,8 +49,7 @@ public class CalcController {
         return "redirect:/index";
     }
 
-    private Long executeOper(String firstArg, String secondArg, String oper) {
-        OperationFactory operationFactory = new OperationFactory();
+    private Long executeOper(String firstArg, String secondArg, String oper) {  
         Operation operation = operationFactory.createOperation(oper);
         return operation.excecute(Long.parseLong(firstArg), Long.parseLong(secondArg));
 

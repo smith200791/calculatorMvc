@@ -8,11 +8,11 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<bean id="/" class="ru.nvd.andr.calcmvc.operations.DivisionOperationImpl" />
+ 	<bean id="/" class="ru.nvd.andr.calcmvc.operations.DivisionOperationImpl" />
 	<bean id="*" class="ru.nvd.andr.calcmvc.operations.MultiplyOperationImpl" />
 
 
-	<bean id="+" class="ru.nvd.andr.calcmvc.operations.SubtractionOperationImpl" />
-	<bean id="-" class="ru.nvd.andr.calcmvc.operations.SummOperationImpl" />
+	<bean id="-" class="ru.nvd.andr.calcmvc.operations.SubtractionOperationImpl" />
+	<bean id="+" class="ru.nvd.andr.calcmvc.operations.SummOperationImpl" /> 
 
 </beans>
