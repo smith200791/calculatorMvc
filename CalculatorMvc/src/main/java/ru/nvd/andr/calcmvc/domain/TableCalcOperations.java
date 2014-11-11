@@ -12,6 +12,10 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
+import ru.nvd.andr.calcmvc.validation.CalcArgument;
+
 
 @Entity
 @Table(name="TABLE_CALC_OPERATIONS" ,uniqueConstraints = {
@@ -25,9 +29,13 @@ public class TableCalcOperations  {
     protected long objid;
     
     @Column(name="FIRSTARG",unique = false, nullable = false, length = 255)
+    @CalcArgument
+    @NotEmpty(message = "firstarg can not be empty")
     protected String firstarg;
 
     @Column(name="SECONDARG",unique = false, nullable = false, length = 255)
+    @CalcArgument
+    @NotEmpty(message = "secondarg can not be empty")
     protected String secondarg;
 
     @Column(name="OPERATION",unique = false, nullable = false, length = 255)

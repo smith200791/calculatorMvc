@@ -25,13 +25,14 @@
 	<context:component-scan base-package="ru.nvd.andr.calcmvc.dao" />
 	<context:component-scan base-package="ru.nvd.andr.calcmvc.service" />
 	<context:component-scan base-package="ru.nvd.andr.calcmvc.operations" />
-	
+	<context:component-scan base-package="ru.nvd.andr.calcmvc.validation" />
+
 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
-	<!-- Файл с бинами для расширения функционала приложения-->
+	<!-- Файл с бинами для расширения функционала приложения -->
 	<import resource="beans.xml" />
- 
+
 	<!-- Файл с настройками безопасности -->
 	<import resource="security.xml" />
 </beans>

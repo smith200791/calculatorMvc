@@ -8,6 +8,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <title><spring:message code="label.title" /></title>
+<style>
+.error {
+	color: red;
+	font-weight: bold;
+}
+</style>
 </head>
 <body>
 
@@ -19,14 +25,16 @@
 		<spring:message code="label.title" />
 	</h2>
 
-	<form:form method="post"   modelAttribute="calcOperations" > 
-	<!-- modelAttribute="calcOperations" данный параметр задается в контоллере при инициализации -->
+	<form:form method="post" modelAttribute="calcOperations">
+		<!-- modelAttribute="calcOperations" данный параметр задается в контоллере при инициализации -->
 		<table>
 			<tr>
-				<td><form:label path="firstarg"> <!-- а это поля данной объектной модели, можно сразу инициализировать объект -->
+				<td><form:label path="firstarg">
+						<!-- а это поля данной объектной модели, можно сразу инициализировать объект -->
 						<spring:message code="label.firstarg" />
 					</form:label></td>
 				<td><form:input path="firstarg" /></td>
+
 			</tr>
 			<tr>
 				<td><form:label path="secondarg">
@@ -40,16 +48,17 @@
 					value="<spring:message code="label.summ"/>" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" name="multiply" class="button" 
-					value="<spring:message code="label.multiply"/>" /></td>
+				<td colspan="2"><input type="submit" name="multiply"
+					class="button" value="<spring:message code="label.multiply"/>" /></td>
+
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" name="subtraction" class="button" 
-					value="<spring:message code="label.subtraction"/>" /></td>
+				<td colspan="2"><input type="submit" name="subtraction"
+					class="button" value="<spring:message code="label.subtraction"/>" /></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="submit" name="division" class="button" 
-					value="<spring:message code="label.division"/>" /></td>
+				<td colspan="2"><input type="submit" name="division"
+					class="button" value="<spring:message code="label.division"/>" /></td>
 			</tr>
 		</table>
 	</form:form>
@@ -60,7 +69,7 @@
 	<c:if test="${!empty calcOperationsList}">
 		<table class="data">
 			<tr>
-			<%-- 
+				<%-- 
 				<th><spring:message code="label.firstarg" /></th>
 				<th><spring:message code="label.createdate" /></th>
 				<th><spring:message code="label.result" /></th>
@@ -69,7 +78,10 @@
 			</tr>
 			<c:forEach items="${calcOperationsList}" var="calcOperations">
 				<tr>
-					<td> objid = ${calcOperations.objid}: ${calcOperations.firstarg} ${calcOperations.operation} ${calcOperations.secondarg} = ${calcOperations.result}  дата транзакции : ${calcOperations.createDate}</td>
+					<td>objid = ${calcOperations.objid}:
+						${calcOperations.firstarg} ${calcOperations.operation}
+						${calcOperations.secondarg} = ${calcOperations.result} дата
+						транзакции : ${calcOperations.createDate}</td>
 					<td><a href="delete/${calcOperations.objid}"><spring:message
 								code="label.delete" /></a></td>
 				</tr>
