@@ -44,7 +44,7 @@ public class CalcController {
     }
 
     @RequestMapping(params = "summ", method = RequestMethod.POST)
-    public String summ(@Valid @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) throws MethodArgumentNotValidException {
+    public String summ(@Valid @TableCalcOperation @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) throws MethodArgumentNotValidException {
         calcOpers.setOperation("+");
         calcOpers.setCreateDate(new Date());
 
@@ -63,7 +63,7 @@ public class CalcController {
     }
 
     @RequestMapping(params = "multiply", method = RequestMethod.POST)
-    public String multiply(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
+    public String multiply(@Valid @TableCalcOperation @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
         calcOpers.setOperation("*");
         calcOpers.setCreateDate(new Date());
         if (result.hasErrors()) {
@@ -77,7 +77,7 @@ public class CalcController {
     }
 
     @RequestMapping(params = "division", method = RequestMethod.POST)
-    public String division(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
+    public String division(@Valid @TableCalcOperation @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
         calcOpers.setOperation("/");
         calcOpers.setCreateDate(new Date());
         if (result.hasErrors()) {
@@ -92,7 +92,7 @@ public class CalcController {
     }
 
     @RequestMapping(params = "subtraction", method = RequestMethod.POST)
-    public String subtraction(@ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
+    public String subtraction(@Valid @TableCalcOperation @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
         calcOpers.setOperation("-");
         calcOpers.setCreateDate(new Date());
         if (result.hasErrors()) {
@@ -117,21 +117,15 @@ public class CalcController {
         return "validationex";
     }
 
-    @RequestMapping("/logout")
-    public String logout() {
-        return "logout";
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
     }
 
-    // @ExceptionHandler(MethodArgumentNotValidException.class)
-    // @ResponseStatus(HttpStatus.BAD_REQUEST)
-    // @ResponseBody
-    // public List<String> handleValidationError(MethodArgumentNotValidException e) {
-    // List<String> errorMessages = new ArrayList<String>();
-    // for (ObjectError objectError : e.getBindingResult().getAllErrors()) {
-    // // errorMessages.add(buildMessage(objectError));
-    // }
-    // return errorMessages;
-    // }
+    @RequestMapping("/logout")
+    public String logout() {
+        return "j_spring_security_logout";
+    }
 
     private ArrayList<String> buildMessage(List<ObjectError> objectErrors) {
         ArrayList<String> messages = new ArrayList<String>();

@@ -10,10 +10,6 @@
 </head>
 <body>
 
-<a href="<c:url value="/index" />">
-	<spring:message code="label.calculator" />
-</a><br/>
-
 <c:if test="${not empty param.error}">
 	<font color="red"> <spring:message code="label.loginerror" />
 	: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
@@ -33,8 +29,8 @@
 		<td><input type="checkbox" name="_spring_security_remember_me" /></td>
 	</tr>
 	<tr>
-		<td colspan="2" align="right"><input type="submit" value="Login" />
-		<input type="reset" value="Reset" /></td>
+		<td colspan="2" align="right"><input type="submit" value="<spring:message code="label.login"/>" />
+		<input type="reset" value="<spring:message code="label.reset"/>" />
 	</tr>
 </table>
 </form>

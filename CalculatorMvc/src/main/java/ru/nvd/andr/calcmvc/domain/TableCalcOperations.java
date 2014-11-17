@@ -62,6 +62,7 @@ public class TableCalcOperations  {
     public void setResult(String result) {
         this.result = result;
     }
+    
 
     public Date getCreateDate() {
         return createDate;
