@@ -13,15 +13,17 @@
 	<!-- <http> auto-config='true' <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" 
 		/> <intercept-url pattern="/**" access="ROLE_USER" /> <form-login login-page='/login.jsp' 
 		/> </http> -->
-	
-	
+
+
 	<http pattern="/login" security="none" />
+	<http pattern="/error403" security="none" />
 	<http auto-config='true'>
 		<intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/**" access="ROLE_USER" />
-		<form-login login-page='/login' />
+		<form-login login-page='/login' authentication-failure-url="/error403"	/>
+		<logout logout-url="/logout" />
 	</http>
-	
+
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>

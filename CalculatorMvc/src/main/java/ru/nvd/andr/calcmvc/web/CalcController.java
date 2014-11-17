@@ -85,6 +85,7 @@ public class CalcController {
             return "validationex";
         }
 
+        
         calcOpers.setResult(executeOper(calcOpers).toString());
         calcOperationsService.addTableCalcOperations(calcOpers);
         return "redirect:/index";
@@ -112,6 +113,11 @@ public class CalcController {
         return "redirect:/index";
     }
 
+    @RequestMapping("/error403")
+    public String error403() {
+        return "error403";
+    }
+
     @RequestMapping("/validationex")
     public String validationex() {
         return "validationex";
@@ -124,7 +130,7 @@ public class CalcController {
 
     @RequestMapping("/logout")
     public String logout() {
-        return "j_spring_security_logout";
+        return "logout";
     }
 
     private ArrayList<String> buildMessage(List<ObjectError> objectErrors) {
