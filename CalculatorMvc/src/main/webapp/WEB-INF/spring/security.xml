@@ -25,10 +25,11 @@
 
 	<authentication-manager>
 		<authentication-provider>
+		    <password-encoder hash="sha"/>
 			<user-service>
-				<user name="smith" password="222555" authorities="ROLE_USER" />
-				<user name="math" password="222555" authorities="ROLE_USER,ROLE_OPER" />
-				<user name="admin" password="admin" authorities="ROLE_USER,ROLE_OPER,ROLE_ADMIN" />
+				<user name="smith" password="66fb41f876d55c8eb746e2893fa9befee95ca906" authorities="ROLE_USER" />
+				<user name="math" password="66fb41f876d55c8eb746e2893fa9befee95ca906" authorities="ROLE_USER,ROLE_OPER" />
+				<user name="admin" password="d033e22ae348aeb5660fc2140aec35850c4da997" authorities="ROLE_USER,ROLE_OPER,ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
