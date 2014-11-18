@@ -4,31 +4,31 @@
                  http://www.springframework.org/schema/beans/spring-beans-3.2.xsd 
                  http://www.springframework.org/schema/security 
                  http://www.springframework.org/schema/security/spring-security-3.2.xsd">
-	<!-- <http access-denied-page="/error403.jsp"> <intercept-url pattern="/index*" 
-		access="ROLE_USER,ROLE_ANONYMOUS" /> <intercept-url pattern="/summ*" access="ROLE_USER" 
-		/> <intercept-url pattern="/delete/*" access="ROLE_ADMIN" /> <intercept-url 
-		pattern="/**" access="ROLE_USER" /> <form-login login-page="/login.jsp" default-target-url="/index" 
-		authentication-failure-url="/login.jsp?error=true" /> <logout logout-url="/logout 
-		" logout-success-url="/logout" /> <remember-me /> </http> -->
-	<!-- <http> auto-config='true' <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" 
-		/> <intercept-url pattern="/**" access="ROLE_USER" /> <form-login login-page='/login.jsp' 
-		/> </http> -->
 
-
+	<global-method-security secured-annotations="enabled">
+		<protect-pointcut expression="execution(* ru.nvd.andr.calcmvc.operations.*.*(..))"
+			access="ROLE_OPER" />
+	</global-method-security>
+	
 	<http pattern="/login" security="none" />
 	<http pattern="/error403" security="none" />
 	<http auto-config='true'>
 		<intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY" />
 		<intercept-url pattern="/**" access="ROLE_USER" />
-		<form-login login-page='/login' authentication-failure-url="/error403"	/>
+		<form-login login-page='/login' authentication-failure-url="/error403" />
 		<logout logout-url="/logout" />
+		<session-management>
+			<concurrency-control max-sessions="1"
+				error-if-maximum-exceeded="true" />
+		</session-management>
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="smith" password="222555" authorities="ROLE_USER, ROLE_ADMIN" />
-				<user name="bob" password="bobspassword1" authorities="ROLE_USER" />
+				<user name="smith" password="222555" authorities="ROLE_USER" />
+				<user name="math" password="222555" authorities="ROLE_USER,ROLE_OPER" />
+				<user name="admin" password="admin" authorities="ROLE_USER,ROLE_OPER,ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

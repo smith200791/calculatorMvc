@@ -57,7 +57,8 @@ public class CalcController {
         calcOperationsService.addTableCalcOperations(calcOpers);
         return "redirect:/index";
     }
-
+    
+    
     private Long executeOper(@TableCalcOperation TableCalcOperations calcOperations) {
         return operationFactory.createOperation(calcOperations.getOperation()).excecute(Long.parseLong(calcOperations.getFirstarg()), Long.parseLong(calcOperations.getSecondarg()));
     }
@@ -84,8 +85,6 @@ public class CalcController {
             objectMap.put("errors", buildMessage(result.getAllErrors()));
             return "validationex";
         }
-
-        
         calcOpers.setResult(executeOper(calcOpers).toString());
         calcOperationsService.addTableCalcOperations(calcOpers);
         return "redirect:/index";

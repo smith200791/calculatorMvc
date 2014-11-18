@@ -2,7 +2,7 @@ package ru.nvd.andr.calcmvc.operations;
 
 import org.springframework.stereotype.Service;
 
-@Service(":")//сервис в спринге это частное от компонента
+@Service("/")//сервис в спринге это частное от компонента
 public class DivisionOperationImpl implements Operation {
 
     @Override
