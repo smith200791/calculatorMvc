@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -43,8 +44,12 @@ public class CalcController {
         return "calculator";
     }
 
+    
+    
     @RequestMapping(params = "summ", method = RequestMethod.POST)
     public String summ(@Valid @TableCalcOperation @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) throws MethodArgumentNotValidException {
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        calcOpers.setUserName(name);
         calcOpers.setOperation("+");
         calcOpers.setCreateDate(new Date());
 
@@ -67,6 +72,8 @@ public class CalcController {
     public String multiply(@Valid @TableCalcOperation @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
         calcOpers.setOperation("*");
         calcOpers.setCreateDate(new Date());
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        calcOpers.setUserName(name);
         if (result.hasErrors()) {
             objectMap.put("errors", buildMessage(result.getAllErrors()));
             return "validationex";
@@ -81,6 +88,8 @@ public class CalcController {
     public String division(@Valid @TableCalcOperation @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
         calcOpers.setOperation("/");
         calcOpers.setCreateDate(new Date());
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        calcOpers.setUserName(name);
         if (result.hasErrors()) {
             objectMap.put("errors", buildMessage(result.getAllErrors()));
             return "validationex";
@@ -95,6 +104,8 @@ public class CalcController {
     public String subtraction(@Valid @TableCalcOperation @ModelAttribute("TableCalcOperations") TableCalcOperations calcOpers, BindingResult result, Map<String, Object> objectMap) {
         calcOpers.setOperation("-");
         calcOpers.setCreateDate(new Date());
+        String name = SecurityContextHolder.getContext().getAuthentication().getName();
+        calcOpers.setUserName(name);
         if (result.hasErrors()) {
             objectMap.put("errors", buildMessage(result.getAllErrors()));
             return "validationex";
@@ -121,6 +132,7 @@ public class CalcController {
     public String validationex() {
         return "validationex";
     }
+    
 
     @RequestMapping("/login")
     public String login() {

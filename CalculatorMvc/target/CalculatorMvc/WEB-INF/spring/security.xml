@@ -6,10 +6,11 @@
                  http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
 	<global-method-security secured-annotations="enabled">
-		<protect-pointcut expression="execution(* ru.nvd.andr.calcmvc.operations.*.*(..))"
+		<protect-pointcut
+			expression="execution(* ru.nvd.andr.calcmvc.operations.*.*(..))"
 			access="ROLE_OPER" />
 	</global-method-security>
-	
+
 	<http pattern="/login" security="none" />
 	<http pattern="/error403" security="none" />
 	<http auto-config='true'>
@@ -21,15 +22,20 @@
 			<concurrency-control max-sessions="1"
 				error-if-maximum-exceeded="true" />
 		</session-management>
+		<remember-me />
+
 	</http>
 
 	<authentication-manager>
 		<authentication-provider>
-		    <password-encoder hash="sha"/>
+			<password-encoder hash="sha" />
 			<user-service>
-				<user name="smith" password="66fb41f876d55c8eb746e2893fa9befee95ca906" authorities="ROLE_USER" />
-				<user name="math" password="66fb41f876d55c8eb746e2893fa9befee95ca906" authorities="ROLE_USER,ROLE_OPER" />
-				<user name="admin" password="admin" authorities="ROLE_USER,ROLE_OPER,ROLE_ADMIN" />
+				<user name="smith" password="66fb41f876d55c8eb746e2893fa9befee95ca906"
+					authorities="ROLE_USER" />
+				<user name="math" password="66fb41f876d55c8eb746e2893fa9befee95ca906"
+					authorities="ROLE_USER,ROLE_OPER" />
+				<user name="admin" password="d033e22ae348aeb5660fc2140aec35850c4da997"
+					authorities="ROLE_USER,ROLE_OPER,ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>

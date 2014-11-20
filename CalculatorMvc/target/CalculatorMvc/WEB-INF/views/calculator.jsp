@@ -82,7 +82,8 @@
 					<td>objid = ${calcOperations.objid}:
 						${calcOperations.firstarg} ${calcOperations.operation}
 						${calcOperations.secondarg} = ${calcOperations.result} дата
-						транзакции : ${calcOperations.createDate}</td>
+						транзакции : ${calcOperations.createDate} \n
+						пользователь : ${calcOperations.userName} \n\n </td>
 					<td><a href="delete/${calcOperations.objid}"><spring:message
 								code="label.delete" /></a></td>
 				</tr>

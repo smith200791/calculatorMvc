@@ -1,6 +1,5 @@
 package ru.nvd.andr.calcmvc.domain;
 
-
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -16,36 +15,45 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import ru.nvd.andr.calcmvc.validation.CalcArgument;
 
-
 @Entity
-@Table(name="TABLE_CALC_OPERATIONS" ,uniqueConstraints = {
-        @UniqueConstraint(columnNames = "OBJID")})
-public class TableCalcOperations  {
-   
+@Table(name = "TABLE_CALC_OPERATIONS", uniqueConstraints = {@UniqueConstraint(columnNames = "OBJID")})
+public class TableCalcOperations {
+
     @Id
-    @Column(name="OBJID",  unique = true, nullable = false)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="calc_oper_seq")
-    @SequenceGenerator(name="calc_oper_seq", sequenceName="calc_oper_seq"  )
+    @Column(name = "OBJID", unique = true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "calc_oper_seq")
+    @SequenceGenerator(name = "calc_oper_seq", sequenceName = "calc_oper_seq")
     protected long objid;
-    
-    @Column(name="FIRSTARG",unique = false, nullable = false, length = 255)
+
+    @Column(name = "FIRSTARG", unique = false, nullable = false, length = 255)
     @CalcArgument
     @NotEmpty(message = "firstarg can not be empty")
     protected String firstarg;
 
-    @Column(name="SECONDARG",unique = false, nullable = false, length = 255)
+    @Column(name = "SECONDARG", unique = false, nullable = false, length = 255)
     @CalcArgument
     @NotEmpty(message = "secondarg can not be empty")
     protected String secondarg;
 
-    @Column(name="OPERATION",unique = false, nullable = false, length = 255)
+    @Column(name = "OPERATION", unique = false, nullable = false, length = 255)
     protected String operation;
 
-    @Column(name="RESULT",unique = false, nullable = false, length = 255)
+    @Column(name = "RESULT", unique = false, nullable = false, length = 255)
     protected String result;
 
-    @Column(name="CREATE_DATE")
+    @Column(name = "CREATE_DATE")
     protected Date createDate;
+
+    @Column(name = "USER_NAME", unique = false, nullable = false, length = 255)
+    protected String userName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public long getObjid() {
         return objid;
@@ -62,7 +70,6 @@ public class TableCalcOperations  {
     public void setResult(String result) {
         this.result = result;
     }
-    
 
     public Date getCreateDate() {
         return createDate;
@@ -95,6 +102,5 @@ public class TableCalcOperations  {
     public void setOperation(String operation) {
         this.operation = operation;
     }
-
 
 }
