@@ -1,0 +1,22 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+           targetNamespace="http://spring.ru/nvd/andr/calcmvc/integration/generated" elementFormDefault="qualified">
+
+    <xs:element name="executeOperRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="firstArg" type="xs:string"/>
+                <xs:element name="secondArg" type="xs:string"/>
+                <xs:element name="operation" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="executeOperResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="result" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
