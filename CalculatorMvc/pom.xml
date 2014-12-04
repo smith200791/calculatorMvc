@@ -59,7 +59,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>
+					<schemaDirectory>${project.basedir}/src/main/webapp/schemas</schemaDirectory>
 					<outputDirectory>${project.basedir}/src/main/java/</outputDirectory>
 					<packageName>ru.nvd.andr.calcmvc.integration.producer.gen</packageName>
 					<clearOutputDir>false</clearOutputDir>
@@ -86,7 +86,7 @@
 		<!-- Spring -->
 		<spring-framework.version>4.1.0.RELEASE</spring-framework.version>
 		<spring-security.version>3.2.5.RELEASE</spring-security.version>
-		
+
 
 		<!-- Hibernate / JPA -->
 		<hibernate.version>4.2.1.Final</hibernate.version>
@@ -170,7 +170,7 @@
 		</dependency>
 
 		<!-- Other Web dependencies -->
-		
+
 		<dependency>
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
@@ -283,6 +283,12 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>1.5.4</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.ws.xmlschema</groupId>
+			<artifactId>xmlschema-core</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 	</dependencies>
+
 
 </project>
