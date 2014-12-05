@@ -4,33 +4,29 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:sws="http://www.springframework.org/schema/web-services"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/web-services
 							http://www.springframework.org/schema/web-services/web-services-2.0.xsd">
 
+	<sws:annotation-driven />
 
- 	<bean id="/" class="ru.nvd.andr.calcmvc.operations.DivisionOperationImpl" />
+	<bean id="/" class="ru.nvd.andr.calcmvc.operations.DivisionOperationImpl" />
 	<bean id="*" class="ru.nvd.andr.calcmvc.operations.MultiplyOperationImpl" />
 
 
 	<bean id="-" class="ru.nvd.andr.calcmvc.operations.SubtractionOperationImpl" />
-	<bean id="+" class="ru.nvd.andr.calcmvc.operations.SummOperationImpl" /> 
-	
-	<bean id="CalcOperService" class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition" lazy-init="true">
-        <property name="schemaCollection">
-            <bean class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
-                <property name="inline" value="true" />
-                <property name="xsds">
-                    <list>
-                        <value>schemas/calcService.xsd</value>
-                    </list>
-                </property>
-            </bean>
-        </property>
-        <property name="portTypeName" value="CalcOperService"/>
-        <property name="serviceName" value="CalcOperService" />
-        <property name="locationUri" value="/endpoints"/>
-    </bean>
-	
+	<bean id="+" class="ru.nvd.andr.calcmvc.operations.SummOperationImpl" />
 
+	<bean
+		class="org.springframework.ws.server.endpoint.adapter.GenericMarshallingMethodEndpointAdapter">
+		<property name="marshaller" ref="marshaller" />
+		<property name="unmarshaller" ref="marshaller" />
+	</bean>
+
+	<bean id="marshaller" class="org.springframework.oxm.xmlbeans.XmlBeansMarshaller" />
+
+	<sws:dynamic-wsdl id="CalcService" portTypeName="service"
+		locationUri="/CalcService">
+		<sws:xsd location="/schemas/calcService.xsd" />
+	</sws:dynamic-wsdl>
 </beans>

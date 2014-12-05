@@ -65,6 +65,11 @@
 					<clearOutputDir>false</clearOutputDir>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
 		</plugins>
 	</build>
 
@@ -102,6 +107,7 @@
 		<oracle.version>10.2.0.1</oracle.version>
 
 	</properties>
+
 
 
 
@@ -288,6 +294,12 @@
 			<artifactId>xmlschema-core</artifactId>
 			<version>2.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.xmlbeans</groupId>
+			<artifactId>xmlbeans</artifactId>
+			<version>2.6.0</version>
+		</dependency>
+
 	</dependencies>
 
 

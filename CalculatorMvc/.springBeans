@@ -15,6 +15,7 @@
 		<config>src/main/webapp/WEB-INF/spring/security.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>java:ru.nvd.andr.calcmvc.operations.OperationFactory</config>
 	</autoconfigs>
 	<configSets>
 		<configSet>
