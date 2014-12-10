@@ -10,6 +10,7 @@
 
 	<sws:annotation-driven />
 
+
 	<bean id="/" class="ru.nvd.andr.calcmvc.operations.DivisionOperationImpl" />
 	<bean id="*" class="ru.nvd.andr.calcmvc.operations.MultiplyOperationImpl" />
 
@@ -17,16 +18,39 @@
 	<bean id="-" class="ru.nvd.andr.calcmvc.operations.SubtractionOperationImpl" />
 	<bean id="+" class="ru.nvd.andr.calcmvc.operations.SummOperationImpl" />
 
-	<bean
-		class="org.springframework.ws.server.endpoint.adapter.GenericMarshallingMethodEndpointAdapter">
-		<property name="marshaller" ref="marshaller" />
-		<property name="unmarshaller" ref="marshaller" />
+	<bean id="CalcService"
+		class="org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition"
+		lazy-init="true">
+		<property name="schemaCollection">
+			<bean
+				class="org.springframework.xml.xsd.commons.CommonsXsdSchemaCollection">
+				<property name="inline" value="true" />
+				<property name="xsds">
+					<list>
+						<value>schemas/calcService.xsd</value>
+					</list>
+				</property>
+			</bean>
+		</property>
+		<property name="portTypeName" value="CalcServie" />
+		<property name="serviceName" value="CalcServie" />
+		<property name="locationUri" value="/endpoints" />
 	</bean>
-
-	<bean id="marshaller" class="org.springframework.oxm.xmlbeans.XmlBeansMarshaller" />
-
-	<sws:dynamic-wsdl id="CalcService" portTypeName="service"
-		locationUri="/CalcService">
-		<sws:xsd location="/schemas/calcService.xsd" />
-	</sws:dynamic-wsdl>
+	<beans>
+		<bean id="exceptionResolver"
+			class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver">
+			<property name="defaultFault" value="SERVER" />
+			<property name="exceptionMappings">
+				<value>
+					org.springframework.oxm.ValidationFailureException=CLIENT,Invalid
+					request
+				</value>
+			</property>
+		</bean>
+	</beans>
+	<!-- <bean class="org.springframework.ws.server.endpoint.adapter.GenericMarshallingMethodEndpointAdapter"> 
+		<property name="marshaller" ref="marshaller" /> <property name="unmarshaller" 
+		ref="marshaller" /> </bean> <bean id="marshaller" class="org.springframework.oxm.xmlbeans.XmlBeansMarshaller" 
+		/> <sws:dynamic-wsdl id="CalcService" portTypeName="CalcService" locationUri="/endpoints"> 
+		<sws:xsd location="calcService.xsd" /> </sws:dynamic-wsdl> -->
 </beans>

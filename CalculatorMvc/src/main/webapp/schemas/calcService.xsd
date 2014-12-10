@@ -1,22 +1,30 @@
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
-           targetNamespace="http://spring.ru/nvd/andr/calcmvc/integration/generated" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://webservices.samples.blog.com"
+	targetNamespace="http://webservices.samples.blog.com"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="executeOperRequest">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="firstArg" type="xs:string" />
+				<xs:element name="secondArg" type="xs:string" />
+				<xs:element name="operation" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
 
-    <xs:element name="executeOperRequest">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="firstArg" type="xs:string"/>
-                <xs:element name="secondArg" type="xs:string"/>
-                <xs:element name="operation" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
-
-    <xs:element name="executeOperResponse">
-        <xs:complexType>
-            <xs:sequence>
-                <xs:element name="result" type="xs:string"/>
-            </xs:sequence>
-        </xs:complexType>
-    </xs:element>
+	<xs:element name="executeOperResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="result" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- <xs:element name="ValidationFault">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="faultCode" type="xs:string" />
+				<xs:element name="faultMessage" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element> -->
 
 </xs:schema>

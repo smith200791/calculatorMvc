@@ -1,24 +1,43 @@
 package ru.nvd.andr.calcmvc.integration.producer.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ru.nvd.andr.calcmvc.domain.TableCalcOperations;
+import ru.nvd.andr.calcmvc.integration.producer.faults.ValidationFault;
 import ru.nvd.andr.calcmvc.integration.producer.gen.ExecuteOperRequest;
 import ru.nvd.andr.calcmvc.integration.producer.gen.ExecuteOperResponse;
 import ru.nvd.andr.calcmvc.operations.Operation;
 import ru.nvd.andr.calcmvc.operations.OperationFactory;
+import ru.nvd.andr.calcmvc.service.CalcOperationsService;
+
 
 @Service
 public class CalcServiceImpl implements CalcService {
 
-    public ExecuteOperResponse executeOper(ExecuteOperRequest executeOperRequest) {
+    @Autowired
+    private CalcOperationsService calcOperationsService;
+    @Autowired
+    private OperationFactory operationFactory;
+
+    public ExecuteOperResponse executeOper(ExecuteOperRequest executeOperRequest) throws ValidationFault {
+        if (executeOperRequest==null || executeOperRequest.getFirstArg()==null || executeOperRequest.getFirstArg().isEmpty()) {
+            throw new ValidationFault("FIRST ARGUMENT CAN NOT BE NULL OR EMPTY");
+        }
         String operationCode = executeOperRequest.getOperation();
         String firstArg = executeOperRequest.getFirstArg();
         String secondArg = executeOperRequest.getSecondArg();
 
-        OperationFactory operationFactory = new OperationFactory();
         Operation operation = operationFactory.createOperation(operationCode);
         Long result = operation.excecute(Long.parseLong(firstArg), Long.parseLong(secondArg));
 
+        TableCalcOperations tableCalcOperations  = new TableCalcOperations();
+        tableCalcOperations.setFirstarg(firstArg);
+        tableCalcOperations.setSecondarg(secondArg);
+        tableCalcOperations.setOperation(operationCode);
+        tableCalcOperations.setUserName("integration");
+        calcOperationsService.addTableCalcOperations(tableCalcOperations);  
+        
         ExecuteOperResponse executeOperResponse = new ExecuteOperResponse();
 
         executeOperResponse.setResult(result.toString());
@@ -26,5 +45,6 @@ public class CalcServiceImpl implements CalcService {
         return executeOperResponse;
 
     }
+
 
 }
