@@ -3,12 +3,13 @@ package ru.nvd.andr.calcmvc.integration.producer.faults;
 import org.springframework.ws.soap.server.endpoint.annotation.FaultCode;
 import org.springframework.ws.soap.server.endpoint.annotation.SoapFault;
 
-@SoapFault(customFaultCode="ValidationFault", faultCode = FaultCode.CUSTOM,locale="en")
+@SoapFault(faultCode = FaultCode.SERVER)
 public class ValidationFault extends Exception {
 
     /**
      * 
      */
+    
     private static final long serialVersionUID = 1L;
 
     public ValidationFault() {

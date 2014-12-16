@@ -21,7 +21,10 @@ public class CalcServiceEndpoint {
     private CalcService calcService;
 
     @PayloadRoot(localPart = "executeOperRequest", namespace = TARGET_NAMESPACE)
-    public @ResponsePayload ExecuteOperResponse executeOper(@RequestPayload ExecuteOperRequest executeOperRequest) throws  ValidationFault {
+    public @ResponsePayload ExecuteOperResponse executeOper(@RequestPayload ExecuteOperRequest executeOperRequest) throws  Exception {
+        if (true) {
+            throw new ValidationFault();
+        }
         return calcService.executeOper(executeOperRequest);
     }
 
