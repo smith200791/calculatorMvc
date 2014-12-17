@@ -5,11 +5,11 @@
                  http://www.springframework.org/schema/security 
                  http://www.springframework.org/schema/security/spring-security-3.2.xsd">
 
-	<global-method-security secured-annotations="enabled">
+	<!-- <global-method-security secured-annotations="enabled">
 		<protect-pointcut
 			expression="execution(* ru.nvd.andr.calcmvc.operations.*.*(..))"
 			access="ROLE_OPER" />
-	</global-method-security>
+	</global-method-security> -->
 
 	<http pattern="/login" security="none" />
 	<http pattern="/error403" security="none" />

@@ -36,21 +36,15 @@
 		<property name="serviceName" value="CalcServie" />
 		<property name="locationUri" value="/endpoints" />
 	</bean>
-
-	<bean id="exceptionResolver"
-		class="ru.nvd.andr.calcmvc.integration.producer.faults.ValidationSoapFaultExceptionResolver">
-		<property name="defaultFault" value="SERVER" />
-		<property name="exceptionMappings">
-			<value>
-				ru.nvd.andr.calcmvc.integration.producer.faults.ValidationFault=SERVER,Validation
-				fault
-			</value>
-		</property>
-	</bean>
-	<!-- <beans> <bean id="exceptionResolver" class="org.springframework.ws.soap.server.endpoint.SoapFaultMappingExceptionResolver"> 
+	<!-- <bean id="exceptionResolver" class="ru.nvd.andr.calcmvc.integration.producer.faults.ValidationSoapFaultExceptionResolver"> 
 		<property name="defaultFault" value="SERVER" /> <property name="exceptionMappings"> 
-		<value> org.springframework.oxm.ValidationFailureException=CLIENT,Invalid 
-		request </value> </property> </bean> </beans> -->
+		<value> ru.nvd.andr.calcmvc.integration.producer.faults.ValidationFault=SERVER,Validation 
+		fault </value> </property> </bean> -->
+	<beans>
+		<bean id="exceptionResolver"
+			class="ru.nvd.andr.calcmvc.integration.producer.faults.ValidationSoapFaultExceptionResolver">
+		</bean>
+	</beans>
 
 
 	<!-- <bean class="org.springframework.ws.server.endpoint.adapter.GenericMarshallingMethodEndpointAdapter"> 
